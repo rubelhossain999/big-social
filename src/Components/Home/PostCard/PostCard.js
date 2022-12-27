@@ -47,15 +47,7 @@ const PostCard = ({ user }) => {
                                     <h3 className='text-3xl font-bold'>{postcard.title}</h3>
                                     <p className='mt-5 mb-5'>{postcard.text}</p>
                                     <>
-                                        <Link className='bg-[#FFE500] btn-xl p-2 rounded-md font-medium hover:bg-info text-black transition-all' to=''>See Details</Link>
-                                        {user?.save ?
-                                            <>
-                                                <FontAwesomeIcon className='pl-5' icon={faHeart} />
-                                            </>
-                                            :
-                                            <>
-                                                <Link to='/'><FontAwesomeIcon className='pl-5 cursor-pointer text-[#FFE500]' icon={faHeart} /></Link>
-                                            </>}
+                                        <Link className='bg-[#FFE500] btn-xl p-2 rounded-md font-medium hover:bg-info text-black transition-all' to='/single-post'>See Details</Link>
                                     </>
                                     <span className='ml-5 cursor-pointer bg-[#FFE500] p-2 text-black rounded-md'><Link to='/'>Edit</Link></span>
                                 </div>
