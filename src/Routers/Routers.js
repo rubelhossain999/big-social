@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import SinglePost from "../Allposts/SinglePost";
 import About from "../Components/About/About";
+import AddPost from "../Components/AddPost/AddPost";
+import AllPost from "../Components/AllPost/AllPost";
 import Favorite from "../Components/Favorite/Favorite";
 import Home from "../Components/Home/Home";
 import Main from "../Components/Main/Main";
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
                 path: '/favorite-post',
                 element: <Favorite />
 
+            },
+            {
+                path: '/all-post',
+                element: <AllPost />
+            },
+            {
+                path: '/add-post',
+                element: <AddPost />
             },
             {
                 path: '/single-post',
