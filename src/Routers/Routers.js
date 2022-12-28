@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import SinglePost from "../Allposts/SinglePost";
+import Login from "../Auth/Login/Login";
+import Registration from "../Auth/Registration/Registration";
 import About from "../Components/About/About";
 import AddPost from "../Components/AddPost/AddPost";
 import AllPost from "../Components/AllPost/AllPost";
@@ -36,6 +38,18 @@ const router = createBrowserRouter([
             {
                 path: '/single-post',
                 element: <SinglePost />
+            },
+            {
+                path: '/login',
+                element: <Login />
+            },
+            {
+                path: '/registration',
+                element: <Registration />
+            },
+            {
+                path: '*',
+                element: "404"
             }
         ]
     }

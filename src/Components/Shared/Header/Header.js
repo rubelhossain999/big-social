@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../../ContextAPI/ContextAPI';
 import HeaderMenu from '../Menus/HeaderMenu';
 
 const Header = () => {
+    const user = useContext(AuthContext);
     return (
         <div className="bg-[#144272] text-[#fff]">
             <div className='navbar lg:w-[1280px] m-auto'>
@@ -26,17 +28,25 @@ const Header = () => {
                 </div>
                 {/* User avatar Are */}
                 <div className="navbar-end">
-                    <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="https://placeimg.com/80/80/people" alt='' />
+                    {user?.uid ?
+                        <>
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src="https://placeimg.com/80/80/people" alt='' />
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-[#144272] rounded-box w-52">
+                                    <li><Link to="/about">Profile</Link></li>
+                                    <li><Link to="/">Logout</Link></li>
+                                </ul>
                             </div>
-                        </label>
-                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-[#144272] rounded-box w-52">
-                            <li><Link to="/">Profile</Link></li>
-                            <li><Link to="/">Logout</Link></li>
-                        </ul>
-                    </div>
+                        </>
+                        :
+                        <div className='uppercase text-[#FFE500] font-bold'>
+                            <Link className='pr-5' to='/login'>LOGIN</Link>
+                        </div>}
+
                 </div>
             </div>
         </div>
