@@ -21,6 +21,15 @@ const Registration = () => {
         formData.append("image", image);
         const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imgbbAPI}`;
 
+        fetch(url, {
+            method: "POST",
+            body: formData
+        })
+        .then( res => res.json())
+        .then( data => {
+            console.log(data);
+        })
+
 
         const userInfo = {
             fullname,
