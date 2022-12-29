@@ -1,7 +1,10 @@
 import React from 'react';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import AboutMe from '../About/AboutMe';
 
 const AddPost = () => {
+    const navigator = useNavigate();
     const handleAddPost = e => {
         e.preventDefault();
         const imgbbAPI = process.env.REACT_APP_ibbimage_KEY;
@@ -27,18 +30,27 @@ const AddPost = () => {
                     description,
                     image: data.data.url
                 }
-                
+
                 fetch('http://localhost:5000/addpost', {
                     method: "POST",
                     headers: {
-                        'content-type' : 'application/json'
+                        'content-type': 'application/json'
                     },
                     body: JSON.stringify(addPost)
                 })
-                .then( res => res.json())
-                .then( data => {
-                    console.log(data);
-                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            form.reset();
+                            toast.success(data.meassage);
+                            navigator('/about')
+                        } else{
+                            toast.error(data.error);
+                        }
+                    })
+                    .catch( error => {
+                        console.log(error.meassage);
+                    })
             })
 
     }
